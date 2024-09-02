@@ -16,6 +16,10 @@ class ArcicleDomain(models.Model):
         db_table = 'article_domain'
         managed=False
 
+class ArticlePath(models.Model):
+    domain_id = models.ForeignKey(ArcicleDomain, on_delete =models.DO_NOTHING, related_name ="domain_path", db_column="domain_id")
+    path = models.CharField(max_length=127, null= False)
+
 class ArticleInfo(models.Model):
     title = models.CharField(max_length=127, null = False)
     url = models.CharField(max_length=127, null = False)
